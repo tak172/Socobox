@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/bPRJx98/photo-2023-08-09-19-13-09.jpg" alt="photo-2023-08-09-19-13-09" border="0" width="200"></a>
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/mHNT6N3/Untitled-logo-4-free-file.jpg" width="200"></a>
 </p>
 
 <p align="center">
