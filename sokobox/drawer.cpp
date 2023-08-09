@@ -6,7 +6,7 @@ drawer::drawer()
 {
 
 }
-//------------------------------------------------------------------------------
+
 void drawer::draw(const level &aLevel, QGLWidget &aGLWidget)
 {
     if(!aLevel.mIsLoad)
@@ -16,7 +16,7 @@ void drawer::draw(const level &aLevel, QGLWidget &aGLWidget)
     _draw_objects(aLevel, aGLWidget);
     _draw_statistic(aLevel, aGLWidget);
 }
-//------------------------------------------------------------------------------
+
 void drawer::_draw_grid(const level &aLevel, QGLWidget &aGLWidget)
 {
     static auto sw = appSettings::instance().screenHeight() - 100;
@@ -46,7 +46,7 @@ void drawer::_draw_grid(const level &aLevel, QGLWidget &aGLWidget)
     }
     glEnd();
 }
-//------------------------------------------------------------------------------
+
 void drawer::_draw_objects(const level &aLevel, QGLWidget &aGLWidget)
 {
     auto &app = appSettings::instance();
@@ -115,7 +115,7 @@ void drawer::_draw_objects(const level &aLevel, QGLWidget &aGLWidget)
 
     glDisable(GL_TEXTURE_2D);
 }
-//------------------------------------------------------------------------------
+
 void drawer::_draw_statistic(const level &aLevel, QGLWidget &aGLWidget)
 {
     static auto font = QFont("Comic Sans MS", 15);
