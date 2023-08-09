@@ -3,8 +3,7 @@
 
 #include<QKeyEvent>
 
-//------------------- ADDITIONAL FUNCTIONS -------------------------------------
-//------------------------------------------------------------------------------
+
 socoban::eMenu operator++(socoban::eMenu &aMenu)
 {
     aMenu = socoban::eMenu(int(aMenu) + 1);
@@ -16,7 +15,7 @@ socoban::eMenu operator++(socoban::eMenu &aMenu)
     }
     return aMenu;
 }
-//------------------------------------------------------------------------------
+
 socoban::eMenu operator--(socoban::eMenu &aMenu)
 {
     aMenu = socoban::eMenu(int(aMenu) - 1);
@@ -27,7 +26,8 @@ socoban::eMenu operator--(socoban::eMenu &aMenu)
         return aMenu;
     }
     return aMenu;
-}//------------------------------------------------------------------------------
+}
+
 int menuStateToInt(const socoban::eMenu &aMenu)
 {
     switch(aMenu)
@@ -41,7 +41,7 @@ int menuStateToInt(const socoban::eMenu &aMenu)
     }
     return -1;
 }
-//------------------------------------------------------------------------------
+
 socoban::eState menuStateToGameState(const socoban::eMenu &aMenu)
 {
     switch(aMenu)
@@ -67,7 +67,7 @@ socoban::socoban()
     mvMenu.push_back({eMenu::PLAYER_STAT, "Statistic"});
     mvMenu.push_back({eMenu::EXIT,        "Exit"});
 }
-//------------------------------------------------------------------------------
+
 void socoban::initializeGL()
 {
     static auto w = appSettings::instance().screenWidth();
@@ -83,7 +83,7 @@ void socoban::initializeGL()
 
     appSettings::instance().load();
 }
-//------------------------------------------------------------------------------
+
 void socoban::resizeGL(int aW, int aH)
 {
     static auto w = appSettings::instance().screenWidth();
@@ -93,7 +93,7 @@ void socoban::resizeGL(int aW, int aH)
     glViewport(0, 0, (GLint)aW, (GLint)aH);
     glOrtho(0, w, h, 0, 0, 1);
 }
-//------------------------------------------------------------------------------
+
 void socoban::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -103,7 +103,7 @@ void socoban::paintGL()
 
     _draw();
 }
-//------------------------------------------------------------------------------
+
 void socoban::keyReleaseEvent(QKeyEvent *apKeyEvent)
 {
     switch (mState)
@@ -135,7 +135,7 @@ void socoban::keyReleaseEvent(QKeyEvent *apKeyEvent)
     }
 
 }
-//------------------------------------------------------------------------------
+
 void socoban::_proccesing()
 {
     switch (mState)
@@ -163,7 +163,7 @@ void socoban::_proccesing()
     }
     }
 }
-//------------------------------------------------------------------------------
+
 void socoban::_draw()
 {
     switch (mState)
@@ -194,7 +194,7 @@ void socoban::_draw()
     }
     }
 }
-//------------------------------------------------------------------------------
+
 void socoban::_draw_menu()
 {
     static auto app_w = appSettings::instance().screenWidth() / 2.f;
@@ -224,7 +224,7 @@ void socoban::_draw_menu()
         y += dy;
     }
 }
-//------------------------------------------------------------------------------
+
 void socoban::_draw_menu_select_level()
 {
     auto &app = appSettings::instance();
@@ -278,16 +278,16 @@ void socoban::_draw_menu_select_level()
         y += dy;
     }
 }
-//------------------------------------------------------------------------------
+
 void socoban::_draw_player_stat()
 {
 }
-//------------------------------------------------------------------------------
+
 void socoban::_draw_play()
 {
     mDraw.draw(mLevel, *this);
 }
-//------------------------------------------------------------------------------
+
 void socoban::_key_released_menu(int aKey)
 {
     switch (aKey)
@@ -311,7 +311,7 @@ void socoban::_key_released_menu(int aKey)
     }
     updateGL();
 }
-//------------------------------------------------------------------------------
+
 void socoban::_key_released_menu_select_level(int aKey)
 {
     const auto &levels = appSettings::instance().availablesLevels();
@@ -359,7 +359,7 @@ void socoban::_key_released_menu_select_level(int aKey)
     }
     updateGL();
 }
-//------------------------------------------------------------------------------
+
 void socoban::_key_released_player_stat(int aKey)
 {
     switch(aKey)
@@ -372,7 +372,7 @@ void socoban::_key_released_player_stat(int aKey)
     }
     updateGL();
 }
-//------------------------------------------------------------------------------
+
 void socoban::_key_released_play(int aKey)
 {
     switch(aKey)
