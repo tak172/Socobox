@@ -11,18 +11,18 @@ static std::array<unsigned int, (int)appSettings::eTexturesID::End> lTextures;
 appSettings::appSettings()
 {
 }
-//------------------------------------------------------------------------------
+
 appSettings::~appSettings()
 {
     save();
 }
-//------------------------------------------------------------------------------
+
 appSettings &appSettings::instance()
 {
     static appSettings res;
     return res;
 }
-//------------------------------------------------------------------------------
+
 void appSettings::load()
 {
 
@@ -46,38 +46,38 @@ void appSettings::load()
 
     _load_textures();
 }
-//------------------------------------------------------------------------------
+
 void appSettings::save()
 {
 }
-//------------------------------------------------------------------------------
+
 QString  appSettings::levelsPath() const
 {
     return levels_path;
 }
-//------------------------------------------------------------------------------
+
 unsigned appSettings::screenWidth() const
 {
     static unsigned res{800};
     return res;
 }
-//------------------------------------------------------------------------------
+
 unsigned appSettings::screenHeight() const
 {
     static unsigned res{600};
     return res;
 }
-//------------------------------------------------------------------------------
+
 const std::vector<std::pair<int, bool>> &appSettings::availablesLevels()
 {
     return mAvailableLevels;
 }
-//------------------------------------------------------------------------------
+
 void appSettings::setQGLWidget(QGLWidget &aQGLWidget)
 {
     mpGLContext = &aQGLWidget;
 }
-//------------------------------------------------------------------------------
+
 void appSettings::_load_textures()
 {
     glEnable(GL_TEXTURE_2D);
@@ -97,7 +97,7 @@ void appSettings::_load_textures()
 
     glDisable(GL_TEXTURE_2D);
 }
-//------------------------------------------------------------------------------
+
 unsigned int appSettings::textureID(eTexturesID aId)
 {
     return lTextures[(int)aId];
