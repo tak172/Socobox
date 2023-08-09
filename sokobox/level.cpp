@@ -8,12 +8,12 @@
 level::level()
 {
 }
-//------------------------------------------------------------------------------
+
 void level::reset()
 {
     load(mLevel);
 }
-//------------------------------------------------------------------------------
+
 void level::load(int aLevel)
 {
     const auto &lp = appSettings::instance().levelsPath();
@@ -60,37 +60,37 @@ void level::load(int aLevel)
                     tmpRoom[mColumns * i + column] =  eField::WALL;
                     break;
                 }
-                case '@': // Player
+                case '@': 
                 {
                     tmpRoom[mColumns * i + column] =  eField::PLAYER;
                     mPlayerPos.first  = i;
                     mPlayerPos.second = column;
                     break;
                 }
-                case '+': // Player on goal square
+                case '+':
                 {
                     tmpRoom[mColumns * i + column] =  eField::PLAYER_ON_GOAL;
                     break;
                 }
-                case '$': // Box
+                case '$': 
                 {
                     tmpRoom[mColumns * i + column] =  eField::BOX;
                     break;
                 }
-                case '*': // Box on goal square
+                case '*': 
                 {
                     tmpRoom[mColumns * i + column] =  eField::BOX_ON_GOAL;
                     ++mGoalCount;
                     ++mBoxesOnGoal;
                     break;
                 }
-                case '.': // Goal square
+                case '.': 
                 {
                     tmpRoom[mColumns * i + column] =  eField::GOAL;
                     ++mGoalCount;
                     break;
                 }
-                case ' ': // Floor or Empty
+                case ' ': 
                 {
                     tmpRoom[mColumns * i + column] = eField::EMPTY;
                     break;
@@ -105,37 +105,37 @@ void level::load(int aLevel)
 
     file.close();
 }
-//------------------------------------------------------------------------------
+
 void level::load(std::string)
 {
 }
-//------------------------------------------------------------------------------
+
 bool level::isComplete()
 {
     return mIsComplete;
 }
-//------------------------------------------------------------------------------
+
 bool level::isLoad()
 {
     return mIsLoad;
 }
-//------------------------------------------------------------------------------
+
 void level::player_up()
 {
     move(-1,0);
 }
-//------------------------------------------------------------------------------
+
 void level::player_down()
 {
     move(1,0);
 }
 
-//------------------------------------------------------------------------------
+
 void level::player_left()
 {
     move(0,-1);
 }
-//------------------------------------------------------------------------------
+
 void level::player_rigth()
 {
     move(0,1);
@@ -145,19 +145,19 @@ void level::move(int aDl, int aDc)
 {
     auto &[line, column] = mPlayerPos;
 
-    auto nl  = line   + aDl;                // next line
-    auto nc  = column + aDc;                // next column
+    auto nl  = line   + aDl;                
+    auto nc  = column + aDc;                
 
-    auto nnl = nl + aDl;                    // next next line
-    auto nnc = nc + aDc;                    // next next column
+    auto nnl = nl + aDl;                   
+    auto nnc = nc + aDc;                    
 
-    auto coff  = mColumns * line + column;  // current offset
-    auto noff  = mColumns * nl + nc;        // next offset
-    auto nnoff = mColumns * nnl + nnc;      // next next offset
+    auto coff  = mColumns * line + column;  
+    auto noff  = mColumns * nl + nc;        
+    auto nnoff = mColumns * nnl + nnc;    
 
-    auto &f   = mRoom[coff];                 // current field
-    auto &nf  = mRoom[noff];                 // next field
-    auto &nnf = mRoom[nnoff];                // next next field
+    auto &f   = mRoom[coff];                
+    auto &nf  = mRoom[noff];               
+    auto &nnf = mRoom[nnoff];  
 
     bool isMoving = false;
 
@@ -236,17 +236,17 @@ void level::move(int aDl, int aDc)
             mIsComplete = true;
     }
 }
-//------------------------------------------------------------------------------
+
 int level::steps_count() const
 {
     return mSteps;
 }
-//------------------------------------------------------------------------------
+
 int level::goals() const
 {
     return mGoalCount;
 }
-//------------------------------------------------------------------------------
+
 int level::boxes_on_goal() const
 {
     return mBoxesOnGoal;
